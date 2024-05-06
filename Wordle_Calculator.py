@@ -86,7 +86,7 @@ root = tk.Tk()
 root.title("Simple Calculator")
 root.geometry("500x750")
 
-with open('result.json', 'r') as f:
+with open('5_letter_words.json', 'r') as f:
     dic = json.load(f)
 
 #create lists
