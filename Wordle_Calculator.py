@@ -83,7 +83,7 @@ def get_words():
                                                 entry4.delete(0, tk.END)
 
 root = tk.Tk()
-root.title("Simple Calculator")
+root.title("Wordle Calculator")
 root.geometry("500x750")
 
 with open('5_letter_words.json', 'r') as f:
