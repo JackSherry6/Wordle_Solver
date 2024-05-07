@@ -21,7 +21,8 @@ def get_words():
     for letter in wrd:
         if letter not in letters1 and letter not in letters2:
             not_in_word.append(letter)
-            alphabet.remove(letter)
+            if letter in alphabet:
+                alphabet.remove(letter)
     
     listbox = tk.Listbox(root, height=5)
     listbox.pack()
@@ -29,44 +30,29 @@ def get_words():
     label.pack()
     for keys in dic:
         if len(keys) == 5:
-            if word == ["0", "1", "2", "3", "4"]:
-                cnt2 = 0
+            if letters1 == "0" and letters2 == "0":
+                cnt3 = 0
                 for i in range(5):
                     if keys[i] not in not_in_word:
-                        cnt2 = cnt2 + 1
-                        if cnt2 == 5:
-                            ugh2 = 0
-                            for j in knownLetters:
-                                if j in keys:
-                                    ugh2 = ugh2 + 1
-                                    if ugh2 == len(knownLetters):
-                                        if letters2 != "0":
-                                            for l in letters2:
-                                                if keys.index(l) != wrd.index(l):
-                                                    listbox.insert(tk.END, keys)
-                                                    entry1.delete(0, tk.END)
-                                                    entry2.delete(0, tk.END)
-                                                    entry3.delete(0, tk.END)
-                                                    entry4.delete(0, tk.END)
-                                        else:
-                                            listbox.insert(tk.END, keys)
-                                            entry1.delete(0, tk.END)
-                                            entry2.delete(0, tk.END)
-                                            entry3.delete(0, tk.END)
-                                            entry4.delete(0, tk.END)
-
-            if word != ["0", "1", "2", "3", "4"]:
-                cnt = 0
-                for i in range(5):
-                    if word[i] == "0" or word[i] == "1" or word[i] == "2" or word[i] == "3" or word[i] == "4" or keys[i] == word[i]:
+                        cnt3 = cnt3 + 1
+                        if cnt3 == 5: 
+                            listbox.insert(tk.END, keys)
+                            entry1.delete(0, tk.END)
+                            entry2.delete(0, tk.END)
+                            entry3.delete(0, tk.END)
+                            entry4.delete(0, tk.END)
+            else:
+                if word == ["0", "1", "2", "3", "4"]:
+                    cnt2 = 0
+                    for i in range(5):
                         if keys[i] not in not_in_word:
-                            cnt = cnt + 1
-                            if cnt == 5:
-                                ugh = 0
+                            cnt2 = cnt2 + 1
+                            if cnt2 == 5:
+                                ugh2 = 0
                                 for j in knownLetters:
                                     if j in keys:
-                                        ugh = ugh + 1
-                                        if ugh == len(knownLetters):
+                                        ugh2 = ugh2 + 1
+                                        if ugh2 == len(knownLetters):
                                             if letters2 != "0":
                                                 for l in letters2:
                                                     if keys.index(l) != wrd.index(l):
@@ -81,6 +67,33 @@ def get_words():
                                                 entry2.delete(0, tk.END)
                                                 entry3.delete(0, tk.END)
                                                 entry4.delete(0, tk.END)
+
+                if word != ["0", "1", "2", "3", "4"]:
+                    cnt = 0
+                    for i in range(5):
+                        if word[i] == "0" or word[i] == "1" or word[i] == "2" or word[i] == "3" or word[i] == "4" or keys[i] == word[i]:
+                            if keys[i] not in not_in_word:
+                                cnt = cnt + 1
+                                if cnt == 5:
+                                    ugh = 0
+                                    for j in knownLetters:
+                                        if j in keys:
+                                            ugh = ugh + 1
+                                            if ugh == len(knownLetters):
+                                                if letters2 != "0":
+                                                    for l in letters2:
+                                                        if keys.index(l) != wrd.index(l):
+                                                            listbox.insert(tk.END, keys)
+                                                            entry1.delete(0, tk.END)
+                                                            entry2.delete(0, tk.END)
+                                                            entry3.delete(0, tk.END)
+                                                            entry4.delete(0, tk.END)
+                                                else:
+                                                    listbox.insert(tk.END, keys)
+                                                    entry1.delete(0, tk.END)
+                                                    entry2.delete(0, tk.END)
+                                                    entry3.delete(0, tk.END)
+                                                    entry4.delete(0, tk.END)
 
 root = tk.Tk()
 root.title("Wordle Calculator")
