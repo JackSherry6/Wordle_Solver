@@ -1,7 +1,5 @@
 import tkinter as tk
 import json
-
-#TODO: make a clause that doesnt allow the use to enter nothing for those 2 boxes
     
 def get_words():
     wrd = entry1.get()
